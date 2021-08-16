@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="reveal.js/dist/reset.css" />
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="reveal.js/dist/theme/league.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="reveal.js/plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Sapphire Health</h2>
+          <h3>Certificate Automation</h3>
+        </section>
+        <section>
+          <h2>Why?</h2>
+          <ul>
+            <li class="fragment">No more annual wildcard replacement</li>
+            <li class="fragment">Save time</li>
+            <li class="fragment">Improve security</li>
+            <li class="fragment">Minimize risk of service interruption due to certificate expiration</li>
+            <li class="fragment">Prepare for quick response to new vulnerabilities in existing keys and encryption/hashing algorithms</li>
+          </ul>
+          <aside class="notes">
+            - Why do we want to automate certificates?<br>
+            - Certificates with a shorter lifespan are more secure<br>
+            - Better key management, by avoiding constant import and export of wildcard laying all over<br>
+            - With one cert everywhere, one compromise means everything is compromised
+          </aside>
+        </section>
+        <section>
+          <h2>How?</h2>
+          <h3>ACME & Let's Encrypt</h3>
+          <div class="r-stack">
+            <p class="fragment current-visible">The Automated Certificate Management Environment protocol (ACME) is a protocol for automating certificate lifecycle management communications between Certificate Authorities (CAs) and a company’s web servers, email systems, user devices, and any other place Public Key Infrastructure certificates (PKI) are used.</p>
+            <ul>
+              <li class="fragment">An open standard with a full set of commands and robust error handling</li>
+              <li class="fragment">Best of breed TLS and other PKI security practices</li>
+              <li class="fragment">Ongoing enhancements and support by a community</li>
+              <!--<li class="fragment">Adoption increasing within the enterprise, service providers, and commercial CAs</li>-->
+              <li class="fragment">Developed by the ISRG for issuing free certificates with their Let's Encrypt service</li>
+            </ul>
+          </div>
+          <aside class="notes">
+            - How are we going to pull this off?
+          </aside>
+        </section>
+        <section>
+          <h2>What?</h2>
+          <h3 class="fragment">Certify The Web</h3>
+          <div class="r-stack">
+            <img class="fragment current-visible" style="width: 65%;" src="images/ctw.png">
+            <ul>
+              <li class="fragment">Deploy to local certificate store</li>
+              <li class="fragment">Deploy to ADFS</li>
+              <li class="fragment">Deploy to Exchange</li>
+              <li class="fragment">Deploy to Azure Key Vault</li>
+              <li class="fragment">Deploy with a PowerShell script</li>
+              <li class="fragment">More!</li>
+            </ul>
+          </div>
+          <aside class="notes">
+            - What are we using to do this?<br>
+            - Certify the Web manages free https certificates issued by Let's Encrypt for IIS, Windows and other services 
+          </aside>
+        </section>
+        <section>
+          <h3>Process</h3>
+          <div class="r-stack">
+            <img class="fragment current-visible" src="images/demo-1.png">
+            <img class="fragment current-visible" src="images/demo-2.png">
+            <img class="fragment current-visible" src="images/demo-3.png">
+            <img class="fragment current-visible" src="images/demo-4.png">
+            <img class="fragment current-visible" src="images/demo-5.png">
+            <img class="fragment current-visible" src="images/demo-6.png">
+            <img class="fragment current-visible" src="images/demo-7.png">
+            <img class="fragment current-visible" src="images/demo-8.png">
+            <img class="fragment current-visible" src="images/demo-9.png">
+            <img class="fragment current-visible" src="images/demo-10.png">
+            <img class="fragment current-visible" src="images/demo-11.png">
+            <img class="fragment current-visible" src="images/demo-12.png">
+            <img class="fragment current-visible" src="images/demo-13.png">
+            <img class="fragment current-visible" src="images/demo-14.png">
+            <img class="fragment current-visible" src="images/demo-last.png">
+            <img class="fragment current-visible" src="images/mmc.png">
+          </div>
+        </section>
+        <section>
+          <h2>What If Renewal breaks?</h2>
+          <h3 class="fragment">We monitor 😎</h3>
+          <ul>
+            <li class="fragment">Already monitoring many critical services for certificate expiration</li>
+            <li class="fragment">Support for any SSL/TLS protocol, STARTTLS, SNI, legacy protocols</li>
+            <li class="fragment">Email notifications when certificates are within 30 days of expiration</li>
+            <li class="fragment">30 day lead-time for renewal issues</li>
+          </ul>
+          <aside class="notes">
+            
+          </aside>
+        </section>
+        <section>
+          <h3>Deployment & Maintenance</h3>
+          <div class="r-stack">
+            <img class="fragment current-visible" src="images/deploy.PNG">
+            <img class="fragment" src="images/inventory.PNG">
+          </div>
+          <aside class="notes">
+            - What about deployment and maintenance of the Certify the Web client?<br>
+            - Want to make sure we're not taking away manual certificate management just to add manual Certify the Web client management (upgrades)<br>
+            - Automate deployment and maintenance with tower
+          </aside>
+        </section>
+        <section>
+          <h3>What's the Catch?</h3>
+          <img src="images/catch.PNG">
+        </section>
+      </div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/notes/notes.js"></script>
+    <script src="reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="reveal.js/plugin/zoom/zoom.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        pdfSeparateFragments: false,
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom],
+		transition: 'default'
+      });
+
+      Reveal.on( 'fragmentshown', event => {
+        if(event.fragment.getAttribute('id') == 'last-fragment') {
+          window.location = 'Day-1-A-Asymmetric_Cryptography.html'
+        }
+      });
+    </script>
+    <style>
+      td {
+        border-bottom: 0px !important;
+      }
+    </style>
+  </body>
+</html>
